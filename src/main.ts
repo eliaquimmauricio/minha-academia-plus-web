@@ -13,6 +13,7 @@ import App from '@/App.vue';
 Vue.use(PiniaVuePlugin)
 const pinia = createPinia()
 
+
 Vue.config.productionTip = false;
 Vue.component('Teleport', teleport);
 
