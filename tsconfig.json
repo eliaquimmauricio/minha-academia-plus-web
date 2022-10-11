@@ -1,16 +1,20 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig.json",
-  "extends": "@vue/tsconfig/tsconfig.web.json",
   "compilerOptions": {
-    "newLine": "lf",
-    "noImplicitAny": false,
-		"allowJs": true,
-		"paths": { "@/*": ["./src/*"] },
-    "types": ["vite/client", "vitest/globals", "vue", "vuetify"],
-    "lib": ["ESNext", "DOM", "DOM.Iterable", "ScriptHost"]
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "skipLibCheck": true,
+    "allowJs": true,
+    "noImplicitAny": false
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["node_modules", "dist"],
-  "references": [{ "path": "./tsconfig.node.json" }],
-  "vueCompilerOptions": { "target": 2.7 }
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

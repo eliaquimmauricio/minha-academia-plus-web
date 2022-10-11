@@ -1,25 +1,15 @@
-/** Vue main script */
-import Vue from 'vue';
-import { markRaw } from "vue";
+import { createApp } from 'vue'
+import App from './App.vue'
+import vuetify from './plugins/vuetify'
+import { loadFonts } from './plugins/webfontloader'
+import router from "./router";
+import { createPinia } from 'pinia'
 
-import router from '@/router';
-import store from '@/store/index.bkp';
-import vuetify from './plugins/vuetify';
-import teleport from 'vue2-teleport';
-import { createPinia, PiniaVuePlugin } from 'pinia'
-
-import App from '@/App.vue';
-
-Vue.use(PiniaVuePlugin)
+loadFonts()
 const pinia = createPinia()
 
-
-Vue.config.productionTip = false;
-Vue.component('Teleport', teleport);
-
-new Vue({
-  render: h => h(App),
-  vuetify,
-	pinia,
-  router,
-}).$mount('#app');
+createApp(App)
+    .use(router)
+    .use(pinia)
+    .use(vuetify)
+    .mount('#app')

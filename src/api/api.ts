@@ -1,5 +1,6 @@
+// @ts-ignore
 import axios from "axios";
-import router from "@/router";
+import router from "../router";
 
 export default ({ requiresAuth = false }) => {
 	const options = { baseURL: "", headers: { Authorization: "" } };
@@ -12,13 +13,13 @@ export default ({ requiresAuth = false }) => {
 
 	const instance = axios.create(options);
 
-	instance.interceptors.response.use(response => {
+	instance.interceptors.response.use((response: any) => {
 		return response;
-	}, error => {
+	}, (error: any) => {
 		return Promise.reject(error);
 	});
 
-	instance.interceptors.request.use((request) => {
+	instance.interceptors.request.use((request: any) => {
 		const token = localStorage.getItem("tokenAcesso");
 		if (token) {
 			// @ts-ignore
