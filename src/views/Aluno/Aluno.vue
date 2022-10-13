@@ -1,5 +1,5 @@
 <template>
-<br/>
+  <br/>
   <v-card-title class="text-left text-subtitle-1">Seja bem-vindo, {{ alunoObj.dadosPessoais.apelido }}.</v-card-title>
   <v-card-subtitle class="text-left text-white">
     <v-chip class="ma-1" color="secondary">{{ alunoObj.dadosPessoais.idade }} anos</v-chip>
