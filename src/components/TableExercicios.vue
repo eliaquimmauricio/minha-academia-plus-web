@@ -1,11 +1,9 @@
 <template>
-  <v-card color="#90537fff" class="text-white">
-    <v-card-title class="h5">{{ items.nomeExercicio }}</v-card-title>
-    <v-card-text class="text-left">
-      <h3>Execução: {{ items.quantidadeDeSeries }} x {{ items.quantidadeDeRepeticoes }} </h3>
-      <h5 v-if="items.observacaoInstrutor">Observações: {{ items.observacaoInstrutor }}</h5>
-    </v-card-text>
-  </v-card>
+  <v-card-text class="text-left">
+    <h4>{{ items.nomeExercicio }}</h4><br/>
+    <span>Execução: {{ items.quantidadeDeSeries }} x {{ items.quantidadeDeRepeticoes }} </span>
+    <span v-if="items.observacaoInstrutor">Observações: {{ items.observacaoInstrutor }}</span>
+  </v-card-text>
 </template>
 <script>
 export default {
@@ -38,5 +36,10 @@ export default {
 </script>
 
 <style scoped>
+
+  div{
+    color: white;
+    background-color: #5c3551ff;
+  }
 
 </style>

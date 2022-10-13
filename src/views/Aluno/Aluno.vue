@@ -1,105 +1,67 @@
 <template>
-
-  <v-container fluid>
-    <v-container class="">
-      <v-row class="alignCard">
-        <v-col class="mb-4">
-          <v-card color="transparent" :loading="loadingData">
-            <v-card-title class="text-left text-subtitle-1 text-white">{{ alunoObj.dadosPessoais.nomeCompleto }}</v-card-title>
-            <v-card-subtitle class="text-left text-white">{{ alunoObj.dadosPessoais.apelido }} - {{ alunoObj.dadosPessoais.idade }}
-              anos - {{ alunoObj.detalhesFisicos[alunoObj.detalhesFisicos.length - 1].peso }} kg - {{ alunoObj.detalhesFisicos[alunoObj.detalhesFisicos.length - 1].percentualGordura }}% BFP
-              <br/>
-              <span>Atualizado em: {{ formatDate(this.alunoObj.detalhesFisicos[this.alunoObj.detalhesFisicos.length - 1].dataHoraCadastro) }}</span>
-            </v-card-subtitle>
-            <v-card-text>
-              <h3 class="text-left text-white">Meus planos de exercícios</h3>
-              <v-expansion-panels>
-                <v-expansion-panel style="background-color: #5c3551ff; color: white;" >
-                  <v-expansion-panel-title>Domingo</v-expansion-panel-title>
-                  <v-expansion-panel-text>
-                    <span v-if="!alunoObj.planosExercicios[0].domingo.length">Sem exercícios cadastrados</span>
-                    <TableExercicios
-                        v-else
-                        class="mb-2"
-                        v-for="exercicio in alunoObj.planosExercicios[0].domingo"
-                        :items="exercicio"
-                        :key="exercicio.ordem" />
-                  </v-expansion-panel-text>
-                </v-expansion-panel>
-                <v-expansion-panel style="background-color: #5c3551ff; color: white;">
-                  <v-expansion-panel-title>Segunda</v-expansion-panel-title>
-                  <v-expansion-panel-text>
-                    <span v-if="!alunoObj.planosExercicios[0].segunda.length">Sem exercícios cadastrados</span>
-                    <TableExercicios
-                        class="mb-2"
-                        v-for="exercicio in alunoObj.planosExercicios[0].segunda"
-                        :items="exercicio"
-                        :key="exercicio.ordem" />
-                  </v-expansion-panel-text>
-                </v-expansion-panel>
-                <v-expansion-panel style="background-color: #5c3551ff; color: white;">
-                  <v-expansion-panel-title>Terça</v-expansion-panel-title>
-                  <v-expansion-panel-text>
-                    <span v-if="!alunoObj.planosExercicios[0].terca.length">Sem exercícios cadastrados</span>
-                    <TableExercicios
-                        class="mb-2"
-                        v-for="exercicio in alunoObj.planosExercicios[0].terca"
-                        :items="exercicio"
-                        :key="exercicio.ordem" />
-                  </v-expansion-panel-text>
-                </v-expansion-panel>
-                <v-expansion-panel style="background-color: #5c3551ff; color: white;">
-                  <v-expansion-panel-title>Quarta</v-expansion-panel-title>
-                  <v-expansion-panel-text>
-                    <span v-if="!alunoObj.planosExercicios[0].quarta.length">Sem exercícios cadastrados</span>
-                    <TableExercicios
-                        class="mb-2"
-                        v-for="exercicio in alunoObj.planosExercicios[0].quarta"
-                        :items="exercicio"
-                        :key="exercicio.ordem" />
-                  </v-expansion-panel-text>
-                </v-expansion-panel>
-                <v-expansion-panel style="background-color: #5c3551ff; color: white;">
-                  <v-expansion-panel-title>Quinta</v-expansion-panel-title>
-                  <v-expansion-panel-text>
-                    <span v-if="!alunoObj.planosExercicios[0].quinta.length">Sem exercícios cadastrados</span>
-                    <TableExercicios
-                        class="mb-2"
-                        v-for="exercicio in alunoObj.planosExercicios[0].quinta"
-                        :items="exercicio"
-                        :key="exercicio.ordem" />
-                  </v-expansion-panel-text>
-                </v-expansion-panel>
-                <v-expansion-panel style="background-color: #5c3551ff; color: white;">
-                  <v-expansion-panel-title>Sexta</v-expansion-panel-title>
-                  <v-expansion-panel-text>
-                    <span v-if="!alunoObj.planosExercicios[0].sexta.length">Sem exercícios cadastrados</span>
-                    <TableExercicios
-                        class="mb-2"
-                        v-for="exercicio in alunoObj.planosExercicios[0].sexta"
-                        :items="exercicio"
-                        :key="exercicio.ordem" />
-                  </v-expansion-panel-text>
-                </v-expansion-panel>
-                <v-expansion-panel style="background-color: #5c3551ff; color: white;">
-                  <v-expansion-panel-title>Sábado</v-expansion-panel-title>
-                  <v-expansion-panel-text>
-                    <span v-if="!alunoObj.planosExercicios[0].sabado.length">Sem exercícios cadastrados</span>
-                    <TableExercicios
-                        class="mb-2"
-                        v-for="exercicio in alunoObj.planosExercicios[0].sabado"
-                        :items="exercicio"
-                        :key="exercicio.ordem" />
-                  </v-expansion-panel-text>
-                </v-expansion-panel>
-              </v-expansion-panels>
-            </v-card-text>
-          </v-card>
-          <v-card></v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-container>
+<br/>
+  <v-card-title class="text-left text-subtitle-1">Seja bem-vindo, {{ alunoObj.dadosPessoais.apelido }}.</v-card-title>
+  <v-card-subtitle class="text-left text-white">
+    <v-chip class="ma-1" color="secondary">{{ alunoObj.dadosPessoais.idade }} anos</v-chip>
+    <v-chip class="ma-1" color="secondary">{{ alunoObj.detalhesFisicos[alunoObj.detalhesFisicos.length - 1].peso }} kg</v-chip>
+    <v-chip class="ma-1" color="secondary">{{ alunoObj.detalhesFisicos[alunoObj.detalhesFisicos.length - 1].percentualGordura }}% BFP</v-chip>
+    <br/>
+    <br/>
+    <span>Atualizado em: {{ formatDate(this.alunoObj.detalhesFisicos[this.alunoObj.detalhesFisicos.length - 1].dataHoraCadastro) }}</span>
+  </v-card-subtitle>
+  <v-card-text>              
+    <v-expansion-panels>
+      <v-expansion-panel>
+        <v-expansion-panel-title>1. Domingo</v-expansion-panel-title>
+        <v-expansion-panel-text>
+          <span v-if="!alunoObj.planosExercicios[0].domingo.length">Sem exercícios cadastrados</span>
+          <TableExercicios v-else class="mb-2" v-for="exercicio in alunoObj.planosExercicios[0].domingo" :items="exercicio" :key="exercicio.ordem" />
+        </v-expansion-panel-text>
+      </v-expansion-panel>
+      <v-expansion-panel>
+        <v-expansion-panel-title>2. Segunda</v-expansion-panel-title>
+        <v-expansion-panel-text>
+          <span v-if="!alunoObj.planosExercicios[0].segunda.length">Sem exercícios cadastrados</span>
+          <TableExercicios class="mb-2" v-for="exercicio in alunoObj.planosExercicios[0].segunda" :items="exercicio" :key="exercicio.ordem" />
+        </v-expansion-panel-text>
+      </v-expansion-panel>
+      <v-expansion-panel>
+        <v-expansion-panel-title>3. Terça</v-expansion-panel-title>
+        <v-expansion-panel-text>
+          <span v-if="!alunoObj.planosExercicios[0].terca.length">Sem exercícios cadastrados</span>
+          <TableExercicios class="mb-2" v-for="exercicio in alunoObj.planosExercicios[0].terca" :items="exercicio" :key="exercicio.ordem" />
+        </v-expansion-panel-text>
+      </v-expansion-panel>
+      <v-expansion-panel>
+        <v-expansion-panel-title>4. Quarta</v-expansion-panel-title>
+        <v-expansion-panel-text>
+          <span v-if="!alunoObj.planosExercicios[0].quarta.length">Sem exercícios cadastrados</span>
+          <TableExercicios class="mb-2" v-for="exercicio in alunoObj.planosExercicios[0].quarta" :items="exercicio" :key="exercicio.ordem" />
+        </v-expansion-panel-text>
+      </v-expansion-panel>
+      <v-expansion-panel>
+        <v-expansion-panel-title>5. Quinta</v-expansion-panel-title>
+        <v-expansion-panel-text>
+          <span v-if="!alunoObj.planosExercicios[0].quinta.length">Sem exercícios cadastrados</span>
+          <TableExercicios class="mb-2" v-for="exercicio in alunoObj.planosExercicios[0].quinta" :items="exercicio" :key="exercicio.ordem" />
+        </v-expansion-panel-text>
+      </v-expansion-panel>
+      <v-expansion-panel>
+        <v-expansion-panel-title>6. Sexta</v-expansion-panel-title>
+        <v-expansion-panel-text>
+          <span v-if="!alunoObj.planosExercicios[0].sexta.length">Sem exercícios cadastrados</span>
+          <TableExercicios class="mb-2" v-for="exercicio in alunoObj.planosExercicios[0].sexta" :items="exercicio" :key="exercicio.ordem" />
+        </v-expansion-panel-text>
+      </v-expansion-panel>
+      <v-expansion-panel>
+        <v-expansion-panel-title>7. Sábado</v-expansion-panel-title>
+        <v-expansion-panel-text>
+          <span v-if="!alunoObj.planosExercicios[0].sabado.length">Sem exercícios cadastrados</span>
+          <TableExercicios class="mb-2" v-for="exercicio in alunoObj.planosExercicios[0].sabado" :items="exercicio" :key="exercicio.ordem" />
+        </v-expansion-panel-text>
+      </v-expansion-panel>
+    </v-expansion-panels>
+  </v-card-text> 
 </template>
 
 <script>
@@ -251,7 +213,16 @@ export default {
 </script>
 
 <style scoped>
-.alignCard{
-  text-align: -webkit-center;
-}
+  .alignCard{
+    text-align: -webkit-center;  
+  }
+
+  div{
+    color: white;
+    background-color: #5c3551ff;
+  }
+
+  span{
+    color: white;
+  }
 </style>

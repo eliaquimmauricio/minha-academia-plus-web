@@ -1,6 +1,5 @@
 <template>
   <v-app class="bgApp">
-
     <v-main>
       <v-fade-transition mode="out-in">
         <router-view/>
