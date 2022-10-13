@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card color="#90537fff" class="text-white">
     <v-card-title class="h5">{{ items.nomeExercicio }}</v-card-title>
     <v-card-text class="text-left">
       <h3>Execução: {{ items.quantidadeDeSeries }} x {{ items.quantidadeDeRepeticoes }} </h3>

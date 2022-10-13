@@ -2,9 +2,6 @@
   "name": "minhaacademiaplus",
   "version": "0.0.0",
   "private": true,
-  "engines": {
-    "node": ">=16.0.0"
-  },
   "scripts": {
     "serve": "vite preview",
     "build": "vite build",

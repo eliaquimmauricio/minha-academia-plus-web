@@ -13,6 +13,7 @@ export const useAuthStore = defineStore('authStore', () => {
     const user: Ref = ref(JSON.parse(localStorage.getItem('user')),)
     const commonStore = useCommonStore()
     const returnUrl: Ref = ref(null)
+    const usuarioAutenticado: Ref = ref({})
 
 
     async function login(usuario: string, senha: string) {

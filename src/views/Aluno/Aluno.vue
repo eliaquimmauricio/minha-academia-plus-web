@@ -2,19 +2,19 @@
 
   <v-container fluid>
     <v-container class="">
-      <v-row class="">
+      <v-row class="alignCard">
         <v-col class="mb-4">
-          <v-card :loading="loadingData">
-            <v-card-title class="text-left text-subtitle-1">{{ alunoObj.dadosPessoais.nomeCompleto }}</v-card-title>
-            <v-card-subtitle class="text-left">{{ alunoObj.dadosPessoais.apelido }} - {{ alunoObj.dadosPessoais.idade }}
+          <v-card color="transparent" :loading="loadingData">
+            <v-card-title class="text-left text-subtitle-1 text-white">{{ alunoObj.dadosPessoais.nomeCompleto }}</v-card-title>
+            <v-card-subtitle class="text-left text-white">{{ alunoObj.dadosPessoais.apelido }} - {{ alunoObj.dadosPessoais.idade }}
               anos - {{ alunoObj.detalhesFisicos[alunoObj.detalhesFisicos.length - 1].peso }} kg - {{ alunoObj.detalhesFisicos[alunoObj.detalhesFisicos.length - 1].percentualGordura }}% BFP
               <br/>
               <span>Atualizado em: {{ formatDate(this.alunoObj.detalhesFisicos[this.alunoObj.detalhesFisicos.length - 1].dataHoraCadastro) }}</span>
             </v-card-subtitle>
             <v-card-text>
-              <h3 class="text-left">Meus planos de exercícios</h3>
+              <h3 class="text-left text-white">Meus planos de exercícios</h3>
               <v-expansion-panels>
-                <v-expansion-panel>
+                <v-expansion-panel style="background-color: #5c3551ff; color: white;" >
                   <v-expansion-panel-title>Domingo</v-expansion-panel-title>
                   <v-expansion-panel-text>
                     <span v-if="!alunoObj.planosExercicios[0].domingo.length">Sem exercícios cadastrados</span>
@@ -26,7 +26,7 @@
                         :key="exercicio.ordem" />
                   </v-expansion-panel-text>
                 </v-expansion-panel>
-                <v-expansion-panel>
+                <v-expansion-panel style="background-color: #5c3551ff; color: white;">
                   <v-expansion-panel-title>Segunda</v-expansion-panel-title>
                   <v-expansion-panel-text>
                     <span v-if="!alunoObj.planosExercicios[0].segunda.length">Sem exercícios cadastrados</span>
@@ -37,7 +37,7 @@
                         :key="exercicio.ordem" />
                   </v-expansion-panel-text>
                 </v-expansion-panel>
-                <v-expansion-panel>
+                <v-expansion-panel style="background-color: #5c3551ff; color: white;">
                   <v-expansion-panel-title>Terça</v-expansion-panel-title>
                   <v-expansion-panel-text>
                     <span v-if="!alunoObj.planosExercicios[0].terca.length">Sem exercícios cadastrados</span>
@@ -48,7 +48,7 @@
                         :key="exercicio.ordem" />
                   </v-expansion-panel-text>
                 </v-expansion-panel>
-                <v-expansion-panel>
+                <v-expansion-panel style="background-color: #5c3551ff; color: white;">
                   <v-expansion-panel-title>Quarta</v-expansion-panel-title>
                   <v-expansion-panel-text>
                     <span v-if="!alunoObj.planosExercicios[0].quarta.length">Sem exercícios cadastrados</span>
@@ -59,7 +59,7 @@
                         :key="exercicio.ordem" />
                   </v-expansion-panel-text>
                 </v-expansion-panel>
-                <v-expansion-panel>
+                <v-expansion-panel style="background-color: #5c3551ff; color: white;">
                   <v-expansion-panel-title>Quinta</v-expansion-panel-title>
                   <v-expansion-panel-text>
                     <span v-if="!alunoObj.planosExercicios[0].quinta.length">Sem exercícios cadastrados</span>
@@ -70,7 +70,7 @@
                         :key="exercicio.ordem" />
                   </v-expansion-panel-text>
                 </v-expansion-panel>
-                <v-expansion-panel>
+                <v-expansion-panel style="background-color: #5c3551ff; color: white;">
                   <v-expansion-panel-title>Sexta</v-expansion-panel-title>
                   <v-expansion-panel-text>
                     <span v-if="!alunoObj.planosExercicios[0].sexta.length">Sem exercícios cadastrados</span>
@@ -81,7 +81,7 @@
                         :key="exercicio.ordem" />
                   </v-expansion-panel-text>
                 </v-expansion-panel>
-                <v-expansion-panel>
+                <v-expansion-panel style="background-color: #5c3551ff; color: white;">
                   <v-expansion-panel-title>Sábado</v-expansion-panel-title>
                   <v-expansion-panel-text>
                     <span v-if="!alunoObj.planosExercicios[0].sabado.length">Sem exercícios cadastrados</span>
@@ -251,5 +251,7 @@ export default {
 </script>
 
 <style scoped>
-
+.alignCard{
+  text-align: -webkit-center;
+}
 </style>

@@ -2,7 +2,7 @@
   <v-container class="text-center">
     <v-row class="my-3">
       <v-col class="">
-        <h1 class="text-h4 font-weight-bold mb-3">Bem-vindo ao MinhaAcademia+</h1>
+        <h1 class="text-white text-h4 font-weight-bold mb-3">Seja bem-vindo {{tipoUser}}</h1>
       </v-col>
     </v-row>
     <v-row>
@@ -26,6 +26,7 @@ const selectedComponent = computed({
     //
   }
 })
+const tipoUser = computed(() => localStorage.getItem('tipoUsuario') == 'Aluno' ? 'aluno' : 'instrutor')
 </script>
 
 <style scoped>
