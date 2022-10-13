@@ -3,7 +3,7 @@
     "composite": true,
     "module": "esnext",
     "moduleResolution": "node",
-	"types": ["vuetify"]
+    "types": ["vuetify"]
   },
   "include": ["vite.config.ts"]
 }
