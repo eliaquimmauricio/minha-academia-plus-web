@@ -16,17 +16,25 @@
         </v-btn>
       </template>
     </v-snackbar>
+    <v-btn @click="logout" color="transparent text-white mb-5" elevation="0">Logout</v-btn>
   </v-app>
 </template>
 
 <script setup lang="ts">
   import {computed, Ref, ref, watch} from 'vue'
   import {useCommonStore} from "./stores/useCommonStore";
+  import router from "./router";
 
   const commonStore = useCommonStore()
   const snackbar: Ref<boolean> = ref(false);
   const snackbarText: Ref<string> = computed(() => commonStore.snackbarText);
 
+  const logout = () => {
+    localStorage.removeItem('tipoUsuario')
+    localStorage.removeItem('dataHoraExpiracao')
+    localStorage.removeItem('tokenAcesso')
+    router.push('/login')
+  }
   watch(snackbarText, () => snackbar.value = true);
 </script>
 <style>
