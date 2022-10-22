@@ -10,11 +10,17 @@ import {useCommonStore} from "./useCommonStore";
 // the first argument is a unique id of the store across your application
 export const useAuthStore = defineStore('authStore', () => {
     // @ts-ignore
-    const user: Ref = ref(JSON.parse(localStorage.getItem('user')),)
+    const user: Ref = ref(JSON.parse(localStorage.getItem('user')))
     const commonStore = useCommonStore()
     const returnUrl: Ref = ref(null)
-    const usuarioAutenticado: Ref = ref({})
 
+    function logout() {
+        user.value = null
+        localStorage.removeItem('tipoUsuario')
+        localStorage.removeItem('dataHoraExpiracao')
+        localStorage.removeItem('tokenAcesso')
+        router.push('/login')
+    }
 
     async function login(usuario: string, senha: string) {
         await api({requiresAuth: false})
@@ -35,5 +41,6 @@ export const useAuthStore = defineStore('authStore', () => {
         user,
         returnUrl,
         login,
+        logout
     }
 })
